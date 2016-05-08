@@ -45,6 +45,7 @@ public class EmployeeRepositoryImplTest extends AndroidTestCase {
                 .contactDetails(contactDetails)
                 .geographicalDetails(geographicalDetails)
                 .idNumber("6546654564654")
+                .loggedIn(1)
                 .build();
 
         Employee inserttedChassis = repo.save(employee);

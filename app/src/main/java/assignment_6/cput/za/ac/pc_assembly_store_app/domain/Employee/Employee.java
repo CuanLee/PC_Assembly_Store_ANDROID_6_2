@@ -18,6 +18,7 @@ public class Employee implements IPerson,Serializable {
     private ContactDetails contactDetails;
     private GeographicalDetails geographicalDetails;
     private String idNumber;
+    private Integer loggedIn;
 
     public Employee() {
     }
@@ -62,6 +63,10 @@ public class Employee implements IPerson,Serializable {
         return idNumber;
     }
 
+    public Integer getLoggedIn() {
+        return loggedIn;
+    }
+
     private Employee(Builder builder)
     {
         this.id = builder.id;
@@ -73,6 +78,7 @@ public class Employee implements IPerson,Serializable {
         this.contactDetails = builder.contactDetails;
         this.geographicalDetails = builder.geographicalDetails;
         this.idNumber = builder.idNumber;
+        this.loggedIn = builder.loggedIn;
     }
 
     public static class Builder{
@@ -85,6 +91,7 @@ public class Employee implements IPerson,Serializable {
         private ContactDetails contactDetails;
         private GeographicalDetails geographicalDetails;
         private String idNumber;
+        private Integer loggedIn;
 
         public Builder id(Long value)
         {
@@ -140,6 +147,12 @@ public class Employee implements IPerson,Serializable {
             return this;
         }
 
+        public Builder loggedIn(Integer value)
+        {
+            this.loggedIn = value;
+            return this;
+        }
+
         public Builder copy(Employee value)
         {
             this.id = value.id;
@@ -151,6 +164,7 @@ public class Employee implements IPerson,Serializable {
             this.contactDetails = value.contactDetails;
             this.geographicalDetails = value.geographicalDetails;
             this.idNumber = value.idNumber;
+            this.loggedIn = value.loggedIn;
 
             return this;
         }

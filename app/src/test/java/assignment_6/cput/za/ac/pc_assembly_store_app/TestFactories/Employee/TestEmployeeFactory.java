@@ -23,14 +23,14 @@ public class TestEmployeeFactory {
     @Test
     public void testEmployeeCreation()
     {
-        Employee employee = factory.createEmployee(123131L,"cuanl26","1234567","Cuan","Lee", "Male",null,null,"6546654564654");
+        Employee employee = factory.createEmployee(123131L,"cuanl26","1234567","Cuan","Lee", "Male",null,null,"6546654564654", 1);
         Assert.assertEquals("Cuan", employee.getFirstName());
     }
 
     @Test
     public void testEmployeeCreationUpdate()
     {
-        Employee employee = factory.createEmployee(123131L,"cuanl26","1234567","Cuan","Lee", "Male",null,null,"6546654564654");
+        Employee employee = factory.createEmployee(123131L,"cuanl26","1234567","Cuan","Lee", "Male",null,null,"6546654564654", 1);
         Assert.assertEquals("Cuan", employee.getFirstName());
 
         Employee updateEmployee = new Employee.Builder()

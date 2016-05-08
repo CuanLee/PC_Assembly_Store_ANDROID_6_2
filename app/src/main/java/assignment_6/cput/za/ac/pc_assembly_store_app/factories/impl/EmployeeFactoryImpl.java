@@ -24,7 +24,7 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
         return factory;
     }
 
-    public Employee createEmployee(Long id, String username, String password, String firstName, String lastName, String gender, ContactDetails contactDetails, GeographicalDetails geographicalDetails, String idNumber){
+    public Employee createEmployee(Long id, String username, String password, String firstName, String lastName, String gender, ContactDetails contactDetails, GeographicalDetails geographicalDetails, String idNumber, Integer loggedIn){
         Employee employee = new Employee.Builder()
                 .id(id)
                 .username(username)
@@ -35,6 +35,7 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
                 .contactDetails(contactDetails)
                 .geographicalDetails(geographicalDetails)
                 .idNumber(idNumber)
+                .loggedIn(loggedIn)
                 .build();
         return employee;
     }

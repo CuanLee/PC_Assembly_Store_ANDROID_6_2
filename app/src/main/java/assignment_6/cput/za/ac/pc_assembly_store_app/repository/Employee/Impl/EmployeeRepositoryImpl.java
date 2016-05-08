@@ -40,6 +40,8 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
     public static final String COLUMN_SUBURB = "suburb";
     public static final String COLUMN_STREET = "street";
     public static final String COLUMN_HOUSE_NUMBER = "houseNumber";
+    public static final String COLUMN_LOGGED_IN = "loggedIn";
+
 
     private static final String DATABASE_CREATE = " CREATE TABLE "
             + TABLE_NAME + "("
@@ -57,6 +59,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
             + COLUMN_SUBURB + " TEXT NULL , "
             + COLUMN_STREET + " TEXT NULL , "
             + COLUMN_HOUSE_NUMBER + " INTEGER NULL , "
+            + COLUMN_LOGGED_IN + " INTEGER NOT NULL , "
             + COLUMN_ID_NUMBER + " TEXT NOT NULL );";
 
     public EmployeeRepositoryImpl(Context context)
@@ -92,6 +95,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
                         COLUMN_SUBURB,
                         COLUMN_STREET,
                         COLUMN_HOUSE_NUMBER,
+                        COLUMN_LOGGED_IN,
                         COLUMN_ID_NUMBER},
                 COLUMN_ID + " =? ",
                 new String[]{String.valueOf(id)},
@@ -124,6 +128,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
                     .contactDetails(contactDetails)
                     .geographicalDetails(geographicalDetails)
                     .idNumber(cursor.getString(cursor.getColumnIndex(COLUMN_ID_NUMBER)))
+                    .loggedIn(cursor.getInt(cursor.getColumnIndex(COLUMN_LOGGED_IN)))
                     .build();
 
             return employee;
@@ -151,6 +156,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
         values.put(COLUMN_SUBURB, entity.getGeographicalDetails().getSuburb());
         values.put(COLUMN_STREET, entity.getGeographicalDetails().getStreet());
         values.put(COLUMN_HOUSE_NUMBER, entity.getGeographicalDetails().getHouseNumber());
+        values.put(COLUMN_LOGGED_IN, entity.getLoggedIn());
 
         long id = db.insertOrThrow(TABLE_NAME, null, values);
         Employee insertedEntity = new Employee.Builder()
@@ -179,6 +185,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
         values.put(COLUMN_SUBURB, entity.getGeographicalDetails().getSuburb());
         values.put(COLUMN_STREET, entity.getGeographicalDetails().getStreet());
         values.put(COLUMN_HOUSE_NUMBER, entity.getGeographicalDetails().getHouseNumber());
+        values.put(COLUMN_LOGGED_IN, entity.getLoggedIn());
         db.update(
                 TABLE_NAME,
                 values,
@@ -230,6 +237,7 @@ public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements Employee
                         .contactDetails(contactDetails)
                         .geographicalDetails(geographicalDetails)
                         .idNumber(cursor.getString(cursor.getColumnIndex(COLUMN_ID_NUMBER)))
+                        .loggedIn(cursor.getInt(cursor.getColumnIndex(COLUMN_LOGGED_IN)))
                         .build();
 
                 employeeSet.add(employee);
