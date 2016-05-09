@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.util.App;
@@ -68,18 +69,27 @@ public class EmployeeServiceImpl extends Service implements EmployeeService {
 
     @Override
     public Set<Employee> getAllAuthenticatedUsers() {
-        return null;
-        /* Set<Employee> employeeHashSet = new HashSet<>();
+        Set<Employee> employeeHashSet = new HashSet<>();
 
         Set<Employee> allEmployee = employeeRepository.findAll();
 
-        for(int i=0; i < allEmployee.size(); i++){
-            if(allEmployee)
-        }*/
+        for(Employee employee: allEmployee){
+            if (employee.getLoggedIn().intValue() == 1)
+                employeeHashSet.add(employee);
+        }
+        return employeeHashSet;
     }
 
     @Override
-    public boolean duplicateUsername(Employee employee) {
-        return false;
+    public boolean duplicateUsername(Employee employeeEntity) {
+        Set<Employee> allEmployee = employeeRepository.findAll();
+        boolean duplicate = false;
+
+        for (Employee employee: allEmployee)
+        {
+            if (employeeEntity.getUsername().equalsIgnoreCase(employee.getUsername()))
+                duplicate = true;
+        }
+        return duplicate;
     }
 }
