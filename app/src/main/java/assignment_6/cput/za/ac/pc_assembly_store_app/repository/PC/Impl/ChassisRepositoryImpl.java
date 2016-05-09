@@ -11,7 +11,7 @@ import android.util.Log;
 import java.util.HashSet;
 import java.util.Set;
 
-import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.DBConstants;
+import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.database.DBConstants;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.PC.Chassis;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.PC.ChassisRepository;
 

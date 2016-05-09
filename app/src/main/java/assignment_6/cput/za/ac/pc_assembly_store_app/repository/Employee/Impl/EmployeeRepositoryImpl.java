@@ -11,12 +11,11 @@ import android.util.Log;
 import java.util.HashSet;
 import java.util.Set;
 
-import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.DBConstants;
+import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.database.DBConstants;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.Employee.ContactDetails;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.Employee.Employee;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.Employee.GeographicalDetails;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.Employee.EmployeeRepository;
-import assignment_6.cput.za.ac.pc_assembly_store_app.repository.Repository;
 
 /**
  * Created by CuanL on 19/04/2016.

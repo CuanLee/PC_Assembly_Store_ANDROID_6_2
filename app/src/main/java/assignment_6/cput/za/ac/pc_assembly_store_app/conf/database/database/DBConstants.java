@@ -1,4 +1,4 @@
-package assignment_6.cput.za.ac.pc_assembly_store_app.conf.database;
+package assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.database;
 
 /**
  * Created by CuanL on 19/04/2016.

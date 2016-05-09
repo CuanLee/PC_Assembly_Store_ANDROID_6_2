@@ -9,6 +9,7 @@ import android.os.IBinder;
 import java.util.List;
 import java.util.Set;
 
+import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.util.App;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.PC.RAM;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.PC.Impl.RAMRepositoryImpl;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.PC.RAMRepository;
@@ -30,12 +31,16 @@ public class RAMServiceImpl extends Service implements RAMService{
 
     private final IBinder localBinder = new ActivateServiceLocalBinder();
 
-    private RAMRepository repo;
-
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
         return localBinder;
+    }
+
+    public class RAMServiceLocalBinder extends Binder {
+        public RAMServiceImpl getService() {
+            return RAMServiceImpl.this;
+        }
     }
 
     public class ActivateServiceLocalBinder extends Binder {
@@ -46,7 +51,7 @@ public class RAMServiceImpl extends Service implements RAMService{
 
     private RAMServiceImpl()
     {
-        ramRepository = new RAMRepositoryImpl(this.getApplicationContext());
+        ramRepository = new RAMRepositoryImpl(App.getAppContext());
     }
 
     @Override

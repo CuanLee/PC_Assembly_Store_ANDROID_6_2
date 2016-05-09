@@ -7,6 +7,7 @@ import android.os.IBinder;
 
 import java.util.Set;
 
+import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.util.App;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.Employee.Employee;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.Employee.EmployeeRepository;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.Employee.Impl.EmployeeRepositoryImpl;
@@ -46,7 +47,7 @@ public class EmployeeServiceImpl extends Service implements EmployeeService {
 
     private EmployeeServiceImpl()
     {
-        employeeRepository = new EmployeeRepositoryImpl(this.getApplicationContext());
+        employeeRepository = new EmployeeRepositoryImpl(App.getAppContext());
     }
 
     @Override
