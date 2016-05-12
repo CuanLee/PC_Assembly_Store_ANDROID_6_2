@@ -13,6 +13,8 @@ import assignment_6.cput.za.ac.pc_assembly_store_app.domain.PC.RAM;
 public interface RAMService {
     RAM addRam(RAM ram);
 
+    boolean duplicateCheck(RAM ram);
+
     RAM updateRam(RAM ram);
 
     RAM getRam(Long ramId);

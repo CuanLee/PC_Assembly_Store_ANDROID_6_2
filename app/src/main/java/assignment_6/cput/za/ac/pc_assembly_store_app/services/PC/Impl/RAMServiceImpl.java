@@ -37,12 +37,6 @@ public class RAMServiceImpl extends Service implements RAMService{
         return localBinder;
     }
 
-    public class RAMServiceLocalBinder extends Binder {
-        public RAMServiceImpl getService() {
-            return RAMServiceImpl.this;
-        }
-    }
-
     public class ActivateServiceLocalBinder extends Binder {
         public RAMServiceImpl getService() {
             return RAMServiceImpl.this;
@@ -56,12 +50,18 @@ public class RAMServiceImpl extends Service implements RAMService{
 
     @Override
     public RAM addRam(RAM ram) {
-        return ramRepository.save(ram);
+        if(duplicateCheck(ram) == false)
+            return ramRepository.save(ram);
+        else
+            return null;
     }
 
     @Override
     public RAM updateRam(RAM ram) {
-        return ramRepository.update(ram);
+        if(duplicateCheck(ram) == false)
+            return ramRepository.update(ram);
+        else
+            return null;
     }
 
     @Override
@@ -84,5 +84,19 @@ public class RAMServiceImpl extends Service implements RAMService{
     @Override
     public int deleteAllRam() {
         return ramRepository.deleteAll();
+    }
+
+    @Override
+    public boolean duplicateCheck(RAM ram) {
+        Set<RAM> allRam = ramRepository.findAll();
+        boolean duplicate = false;
+
+        for (RAM ramRecord: allRam)
+        {
+            if (ram.getCode().equalsIgnoreCase(ramRecord.getCode()) && !ram.getId().equals(ramRecord.getId()))
+                duplicate = true;
+        }
+        return duplicate;
+
     }
 }
