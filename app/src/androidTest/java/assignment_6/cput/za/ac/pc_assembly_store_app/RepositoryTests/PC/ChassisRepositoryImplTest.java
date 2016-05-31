@@ -53,8 +53,8 @@ public class ChassisRepositoryImplTest extends AndroidTestCase {
         Assert.assertEquals(TAG+ " UPDATE ENTITY","Update Chassis",newEntity.getCode());
 
         // DELETE ENTITY
-        repo.delete(updateEntity);
-        Chassis deletedEntity = repo.findById(id);
-        Assert.assertNull(TAG+" DELETE",deletedEntity);
+        //repo.delete(updateEntity);
+        //Chassis deletedEntity = repo.findById(id);
+        //Assert.assertNull(TAG+" DELETE",deletedEntity);
     }
 }

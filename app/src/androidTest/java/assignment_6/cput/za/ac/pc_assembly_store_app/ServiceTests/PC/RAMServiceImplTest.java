@@ -11,6 +11,7 @@ import junit.framework.Assert;
 
 import java.util.Set;
 
+import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.database.GlobalContext;
 import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.util.App;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.PC.RAM;
 import assignment_6.cput.za.ac.pc_assembly_store_app.services.PC.Impl.RAMServiceImpl;
@@ -27,8 +28,10 @@ public class RAMServiceImplTest extends AndroidTestCase {
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        Intent intent = new Intent(App.getAppContext(), RAMServiceImpl.class);
-        App.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        Intent intent = new Intent(this.getContext(), RAMServiceImpl.class);
+        GlobalContext.context = this.getContext();
+        ramService = RAMServiceImpl.getInstance();
+        GlobalContext.getAppContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
         //Create
          ram = new RAM.Builder()
                 .code("vengance")

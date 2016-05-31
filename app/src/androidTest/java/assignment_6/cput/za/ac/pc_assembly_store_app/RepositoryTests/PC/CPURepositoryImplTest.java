@@ -55,8 +55,8 @@ public class CPURepositoryImplTest extends AndroidTestCase{
         Assert.assertEquals(TAG+ " UPDATE ENTITY","Update CPU",newEntity.getCode());
 
         // DELETE ENTITY
-        repo.delete(updateEntity);
-        CPU deletedEntity = repo.findById(id);
-        Assert.assertNull(TAG+" DELETE",deletedEntity);
+        //repo.delete(updateEntity);
+        //CPU deletedEntity = repo.findById(id);
+        //Assert.assertNull(TAG+" DELETE",deletedEntity);
     }
 }

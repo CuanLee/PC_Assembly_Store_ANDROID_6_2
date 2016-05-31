@@ -21,7 +21,7 @@ import assignment_6.cput.za.ac.pc_assembly_store_app.repository.Employee.Employe
  * Created by CuanL on 19/04/2016.
  */
 public class EmployeeRepositoryImpl extends SQLiteOpenHelper implements EmployeeRepository{
-    public static final String TABLE_NAME = "hdd";
+    public static final String TABLE_NAME = "employee";
     private SQLiteDatabase db;
 
     public static final String COLUMN_ID = "id";

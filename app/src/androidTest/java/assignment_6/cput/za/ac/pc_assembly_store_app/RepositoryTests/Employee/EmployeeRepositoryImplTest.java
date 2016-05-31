@@ -73,8 +73,8 @@ public class EmployeeRepositoryImplTest extends AndroidTestCase {
         Assert.assertEquals(TAG+ " UPDATE ENTITY","cuanlee_thatsME",newEntity.getUsername());
 
         // DELETE ENTITY
-        repo.delete(updateEntity);
-        Employee deletedEntity = repo.findById(id);
-        Assert.assertNull(TAG+" DELETE",deletedEntity);
+        //repo.delete(updateEntity);
+        //Employee deletedEntity = repo.findById(id);
+        //Assert.assertNull(TAG+" DELETE",deletedEntity);
     }
 }

@@ -54,8 +54,8 @@ public class HDDRepositoryImplTest extends AndroidTestCase {
         Assert.assertEquals(TAG+ " UPDATE ENTITY","Update HDD",newEntity.getCode());
 
         // DELETE ENTITY
-        repo.delete(updateEntity);
-        HDD deletedEntity = repo.findById(id);
-        Assert.assertNull(TAG+" DELETE",deletedEntity);
+        //repo.delete(updateEntity);
+        //HDD deletedEntity = repo.findById(id);
+        //Assert.assertNull(TAG+" DELETE",deletedEntity);
     }
 }

@@ -9,6 +9,7 @@ import android.os.IBinder;
 import java.util.List;
 import java.util.Set;
 
+import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.database.GlobalContext;
 import assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.util.App;
 import assignment_6.cput.za.ac.pc_assembly_store_app.domain.PC.RAM;
 import assignment_6.cput.za.ac.pc_assembly_store_app.repository.PC.Impl.RAMRepositoryImpl;
@@ -21,6 +22,8 @@ import assignment_6.cput.za.ac.pc_assembly_store_app.services.PC.RAMService;
 public class RAMServiceImpl extends Service implements RAMService{
     final private RAMRepository ramRepository;
 
+    private final IBinder localBinder = new ActivateServiceLocalBinder();
+
     private static RAMServiceImpl service = null;
 
     public static RAMServiceImpl getInstance() {
@@ -28,8 +31,6 @@ public class RAMServiceImpl extends Service implements RAMService{
             service = new RAMServiceImpl();
         return service;
     }
-
-    private final IBinder localBinder = new ActivateServiceLocalBinder();
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -45,23 +46,17 @@ public class RAMServiceImpl extends Service implements RAMService{
 
     private RAMServiceImpl()
     {
-        ramRepository = new RAMRepositoryImpl(App.getAppContext());
+        ramRepository = new RAMRepositoryImpl(GlobalContext.getAppContext());
     }
 
     @Override
     public RAM addRam(RAM ram) {
-        if(duplicateCheck(ram) == false)
-            return ramRepository.save(ram);
-        else
-            return null;
+        return ramRepository.save(ram);
     }
 
     @Override
     public RAM updateRam(RAM ram) {
-        if(duplicateCheck(ram) == false)
-            return ramRepository.update(ram);
-        else
-            return null;
+        return ramRepository.update(ram);
     }
 
     @Override

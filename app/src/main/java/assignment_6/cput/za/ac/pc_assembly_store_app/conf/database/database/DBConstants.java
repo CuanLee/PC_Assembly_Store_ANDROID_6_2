@@ -6,5 +6,5 @@ package assignment_6.cput.za.ac.pc_assembly_store_app.conf.database.database;
 public class DBConstants
 {
     public static final String DATABASE_NAME = "pc_assembly";
-    public static final int DATABASE_VERSION = 14;
+    public static final int DATABASE_VERSION = 30;
 }
